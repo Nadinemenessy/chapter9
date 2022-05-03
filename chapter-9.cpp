@@ -5,7 +5,7 @@ using namespace std;
 //converts all months to numbers
 enum class Month {
     jan = 1, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec
-};
+};//numbers start with zero this makes it so the numbers can start with one so it can match the months
 
 //vector of months
 vector<string> month_tbl = { "January", "February", "March", "April",
@@ -21,24 +21,23 @@ ostream& operator<<(ostream& os, Month m)
 
 
 class Date {
-    int y;
-    Month m;
-    int d;
+    int y; //number of year
+    Month m;//name of month
+    int d;// number of day
 public:
-    Date(int y, Month m, int d); //constructor
+    Date(int y, Month m, int d); //constructor used to initialize some valid values to the data members of an object
     void add_day(int n); //add day function by number of days
-    int year() const { return y; }
+    int year() const { return y; }//getters used to retrieve the variable value ends with return
     Month month() const { return m; }
-    int day() const { return d; } //getters
-};
+    int day() const { return d; } 
 
-Date::Date(int yy, Month mm, int dd)//implementation for constructor
+Date::Date(int yy, Month mm, int dd)//implementation for constructor that initializes the object of that type
     :y{ yy }, m{ mm }, d{ dd }
 {
     if (d < 1 || 31 < d) error("impossible day");
 }
 
-void Date::add_day(int n) //implementation for protoype function
+void Date::add_day(int n) //implementation for (protoype function - enables the compiler to perform more vigorous type checking)
 {
     d += n;
     if (d > 31) d %= 31;
